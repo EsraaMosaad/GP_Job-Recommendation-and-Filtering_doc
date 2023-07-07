@@ -9,10 +9,11 @@ stopwords
 scikit-learn
 cosine_similarity
 pyresparser
-docx
+python-docx
 Document
 fuzzywuzzy
 fuzz
 gensim
+googlesearch
 jinja2
 Environment
