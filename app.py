@@ -6,9 +6,21 @@ import numpy as np
 import ast
 import spacy
 import nltk
-nltk.download('stopwords')
-nltk.download('punkt')
-nltk.download('wordnet')
+import nltk
+try:
+    nltk.data.find('stopwords')
+except LookupError:
+    nltk.download('stopwords')
+
+try:
+    nltk.data.find('punkt')
+except LookupError:
+    nltk.download('punkt')
+
+try:
+    nltk.data.find('wordnet')
+except LookupError:
+    nltk.download('wordnet')
 from matplotlib import pyplot as plt, cm
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
