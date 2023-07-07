@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <title>filtering_page</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500&family=Jost:wght@500;600;700&display=swap" rel="stylesheet"> 
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+     <!-- Libraries Stylesheet -->
+    <link href="{{ url_for('serve_static', path='lib/animate/animate.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('serve_static', path='lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('serve_static', path='lib/lightbox/css/lightbox.min.css') }}" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{{ url_for('serve_static', path='css/bootstrap.min.css') }}" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link rel="stylesheet" href="{{ url_for('serve_static', path='css/style.css') }}">
+	<!-- <title>Filtering System </title> -->
+	<!-- <link href="css/styl.css" rel="stylesheet"> -->
+	<!-- <link rel="stylesheet" href="{{ url_for('static', filename='style2.css') }}"> -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<style>
+		.icon-bar {
+		width: 100%; /* Full-width */
+		background-color: rgba(98, 34, 204, .9); /* Dark-grey background */
+		overflow: auto; /* Overflow due to float */
+		}
+
+		.icon-bar a {
+		float: left; /* Float links side by side */
+		text-align: center; /* Center-align text */
+		width: 10%; /* Equal width (5 icons with 20% width each = 100%) */
+		padding: 1px 0; /* Some top and bottom padding */
+		transition: all 0.3s ease; /* Add transition for hover effects */
+		color: white; /* White text color */
+		font-size: 36px; /* Increased font size */
+		}
+
+		.icon-bar a:hover {
+		background-color: rgba(98, 34, 204, .9); /* Add a hover color */
+		}
+
+		.active {
+		background-color: rgba(255, 255, 255, .1); /* Add an active/current color */
+		}
+        body {
+            background-color: #f1f1f1;
+            font-family: Arial, sans-serif;
+        }
+
+
+		
+
+		
+        .form-container {
+            font-size: 24px;
+            background-color: #263A29;
+            color: #ffffff;
+            border: none;
+			width: 400pt;      
+            position: relative;
+			bottom: 90%;
+            left: 0%;       
+            background-color: rgba(118, 51, 228, 0.9);
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            margin-top: 0;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #ffffff;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .form-group input[type="file"] {
+            padding-top: 5px;
+        }
+
+        .form-group .btn {
+            background-color: #b0beb0;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .form-group .btn:hover {
+            background-color: #dee2de;
+        }
+		.container {
+			display: flex;
+			flex-direction: row;
+		}
+
+		.description {
+			flex-basis: 50%;
+			padding-right: 20px;
+		}
+		
+		.form-container {
+			flex-basis: 50%;
+			padding-left: 20px;
+		}
+    </style>
+	
+</head>
+<body>
+	<!-- <h1>Filtering System</h1> -->
+    <!-- <img src="https://c.stocksy.com/a/zPq200/z9/678155.jpg" alt="Image description"> -->
+	<div class="icon-bar">
+		<a class="active" href="/"><i class="fa fa-home"></i></a>
+		<h1 style="color: white;">Welcome To Our Job Filltering System</h1>
+		<!-- <a href="start_page.html"><i class="fa fa-search"></i></a> -->
+		<!-- <a href="#"><i class="fa fa-envelope"></i></a>
+		<a href="#"><i class="fa fa-globe"></i></a>
+		<a href="#"><i class="fa fa-trash"></i></a> -->
+	</div>
+	
+	<div class="container">
+
+		
+		
+		<!-- portfolio-5 -->
+
+		<script>
+			function validateForm() {
+			  var jobDescription = document.getElementById("job-description-input").value;
+			  var cvFiles = document.getElementById("cv-files-input").files;
+			  var numCvs = document.getElementById("num-cvs-input").value;
+			  
+			  if (jobDescription.trim() == "") {
+				alert("Please enter a job description.");
+				return false;
+			  }
+			  
+			  if (cvFiles.length == 0) {
+				alert("Please upload at least one CV file.");
+				return false;
+			  }
+			  
+			  if (numCvs.trim() == "" || isNaN(numCvs) || parseInt(numCvs) < 1 || parseInt(numCvs) > 100) {
+				alert("Please enter a valid number of similar CVs between 1 and 100.");
+				return false;
+			  }
+			  
+			  return true;
+			}
+			</script>
+			
+	
+	</div>  
+
+	<div class="container-xxl bg-white p-0">
+        <!-- Spinner Start -->
+        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-grow text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <!-- Spinner End -->
+
+
+        <!-- Navbar & Hero Start -->
+        <div class="container-xxl position-relative p-0">
+            <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
+                <a href="" class="navbar-brand p-0">
+                    <h1 class="m-0">Filtering System</h1>
+                    <!-- <img src="img/logo.png" alt="Logo"> -->
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                    <span class="fa fa-bars"></span>
+                </button>
+                
+            </nav>
+
+            
+        </div>
+		<br>
+		<br>
+        <!-- Navbar & Hero End -->
+
+		
+
+        <!-- start form -->
+		<!--  -->
+        <div class="container">
+            <!-- <div class="description">
+                <h1 color="red">This Tool is useful for Filtering Resumes & Dont waste time</h1>
+                <p>This for a company is a useful tool for managing the recruitment process and identifying the most qualified candidates for job openings. It can help streamline the hiring process, reduce administrative workload, and improve the efficiency of the recruitment process. It can also be customized to fit the specific needs and requirements of the company.</p>
+            </div> -->
+            <div style="width: 50%; float: left; margin-top: 8%; margin-right: 5%;">
+
+                <div class="testimonial-item bg-light rounded my-4" >
+                  <p class="fs-5"><i class="fa fa-quote-left fa-4x text-primary mt-n4 me-3"></i>Our Job Filtering CV System is a efficient, and reliable solution for companies seeking to streamline their recruitment process and find the best talent for their open positions. With advanced filtering options and detailed candidate profiles.
+                    </p>
+                </div>
+                <div class="testimonial-item bg-light rounded my-4" >
+                    <p class="fs-5"><i class="fa fa-quote-left fa-4x text-primary mt-n4 me-3"></i>
+                      Simplify your recruitment process and take your business to the next level with our Job Filtering CV System.
+                    </p>
+                </div>
+            </div>
+            <div class="form-container">
+                <!-- <h2>Form</h2> -->
+
+                <form id="filtering-form" method="POST" action="{{ url_for('predict_filtering') }}" enctype="multipart/form-data" onsubmit="return validateForm()">
+                    <div class="form-group">
+<!--                        <label for="param1"></label>-->
+<!--                        <textarea id="job-description-input" name="job_description" placeholder="Job Description..." rows="3" cols="30" onkeypress="return event.keyCode != 13;"></textarea>-->
+<!--                        &lt;!&ndash; <input type="text" id="param1" name="param1" required> &ndash;&gt;-->
+                        <label for="job-description-input">Job Description:</label>
+                        <textarea id="job-description-input" name="job_description" placeholder="Job Description..." rows="3" cols="30" onkeypress="return event.keyCode != 13;"></textarea>
+                    </div>
+
+                    <div class="form-group">
+<!--                        <label for="param2">Number of CVs</label>-->
+<!--                        <input type="number" id="num-cvs-input" name="num_cvs" placeholder=""  min="1" max="100" >-->
+                        <!-- <input type="text" id="param2" name="param2" required> -->
+                        <label for="num-cvs-input">Number of CVs:</label>
+                        <input type="number" id="num-cvs-input" name="num_cvs" placeholder=""  min="1" max="100" >
+                    </div>
+                    <div class="form-group">
+                        <label for="cv-files-input">File:</label>
+                        <input type="file" id="cv-files-input" name="cv_files[]" accept=".pdf" multiple>
+                        <!-- <input type="file" id="file" name="file" required> -->
+                    </div>
+                    <div >
+                        <!-- <input class="filtering-submit" type="submit" value="Filter"> -->
+
+                        <input type="submit" value="Submit" class="btn btn-outline-light">
+                    </div>
+                    <br>
+                    <!-- <div >
+                        <button class = "btn btn-outline-light" onclick="location.href='/'">Home    </button>
+                    </div> -->
+                </form>
+
+            </div>
+		
+        </div>
+		
+<!-- end form -->
+
+     
+         <!-- Footer Start -->
+       <div class="container-fluid bg-primary text-light footer wow fadeIn" data-wow-delay="0.1s">
+       
+        <div class="container px-lg-5">
+            <div class="copyright">
+                <div class="row">
+                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                        &copy; <a class="border-bottom" href="#">Job Recommendations System</a>, All Right Reserved. 
+                        
+                        <!--/*** This templates is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the templates without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+                        Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a>
+                    </div>
+                     <div class="col-md-6 text-center text-md-end">
+                        <div class="footer-menu">
+                            <a href="/">Home</a>
+                            <a href="">Cookies</a>
+
+                        </div>
+                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-lg btn-secondary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+    </div>
+
+   <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('serve_static', path='lib/wow/wow.min.js') }}"></script>
+    <script src="{{ url_for('serve_static', path='lib/easing/easing.min.js') }}"></script>
+    <script src="{{ url_for('serve_static', path='lib/waypoints/waypoints.min.js') }}"></script>
+    <script src="{{ url_for('serve_static', path='lib/counterup/counterup.min.js') }}"></script>
+    <script src="{{ url_for('serve_static', path='lib/owlcarousel/owl.carousel.min.js') }}"></script>
+    <script src="{{ url_for('serve_static', path='lib/isotope/isotope.pkgd.min.js') }}"></script>
+    <script src="{{ url_for('serve_static', path='lib/lightbox/js/lightbox.min.js') }}"></script>
+
+    <!-- Template Javascript -->
+    <script src="{{ url_for('serve_static', path='js/main.js') }}"></script>
+</body>
+
+</html>

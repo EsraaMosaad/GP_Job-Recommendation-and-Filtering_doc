@@ -1,0 +1,182 @@
+
+		/*Small*/
+        @media (min-width: 768px) {
+            .container{
+                width: 750px;
+        
+            }
+        }
+        /*Medium*/
+        @media (min-width: 992px) {
+            .container{
+                width: 970px;
+                
+            }/*lareg*/
+        }@media (min-width: 1200px) {
+            .container{
+                width: 1170px;
+                
+            }
+        }
+
+
+
+
+
+
+
+        
+body {
+    background-color: #f2f2f2;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: fixed;
+}
+img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+
+h1 {
+    text-align: center;
+    margin-top: 0px;
+    font-size: 36px;
+    color: #333333;
+}
+.container {
+    display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-top: -75px; 
+}
+
+
+
+
+
+
+.container .recommendPage {
+
+    display: inline-flex;
+    padding: 25px 28px;
+    font-size: 24px;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #263A29;
+    color: #ffffff;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    position: absolute;
+    top: 76%;
+    left: 70%;
+    z-index: 1;
+}
+.container .filterPage {
+
+display: inline-flex;
+padding: 26px 95px;
+font-size: 24px;
+background-color: #263A29;
+color: #ffffff;
+border: none;
+border-radius: 30px;
+cursor: pointer;
+margin-bottom: 20px;
+position: absolute;
+top: 62%;
+left: 70%;
+z-index: 1;
+}
+
+
+.container .Previous {
+    display: inline-flex;
+    padding: 20px 35px;
+       font-size: 20px;
+    background-color: #263A29;
+    color: #ffffff;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    position: absolute;
+    top: 121%;
+    left: 86%;
+    z-index: 1;
+        }
+        .container .recommendPage:hover,.container .filterPage:hover,.container .Previous:hover {
+            background-color: #5E8D6F;
+            /* Add any other styles you want to apply on hover */
+        }        
+
+        .container .recommendation-upload-form {
+			display: inline-flex;
+    		padding: 12px 30px;
+    		font-size: 24px;
+    		background-color: #263A29;
+    		color: #ffffff;
+    		border: none;
+    		border-radius: 30px;
+    		cursor: pointer;
+    		margin-bottom: 20px;
+    		position: absolute;
+    		top: 60%;
+    		left: 10%;
+    		z-index: 1;
+		}   
+        .recommendation-upload-form input[type="file"] {
+            margin-left: 20px;
+          } 
+
+
+          .container .filtering-form{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 30px;
+            font-size: 24px;
+            background-color: #263A29;
+            color: #ffffff;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            margin-bottom: 20px;
+            position: absolute;
+            top: 38%;
+            left: 70%;
+            z-index: 1;
+          }
+          
+          .filtering-form textarea,
+          .filtering-form label,
+          .filtering-form input{
+            margin: 10px 0;
+            box-sizing: border-box;
+            width: 100%;
+          }
+          
+          .filtering-form input[type="number"]{
+            -moz-appearance: textfield; /* Firefox */
+          }
+           
+           
+
+                button:hover {
+                background-color: #4d4d4d;  
+                        }
+
+
+.bar {
+            position: absolute;
+            left: 60%;
+            top:40%;
+            transform: translateY(-50%);
+            padding: 10px;
+            width: 500px;
+
+}

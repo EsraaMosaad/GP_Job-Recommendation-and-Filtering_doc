@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+    <meta charset="utf-8">
+    <title>DGital - Digital Agency HTML Template</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500&family=Jost:wght@500;600;700&display=swap" rel="stylesheet"> 
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+      <!-- Libraries Stylesheet -->
+    <link href="{{ url_for('serve_static', path='lib/animate/animate.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('serve_static', path='lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('serve_static', path='lib/lightbox/css/lightbox.min.css') }}" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{{ url_for('serve_static', path='css/bootstrap.min.css') }}" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link rel="stylesheet" href="{{ url_for('serve_static', path='css/style.css') }}">
+    <style>
+
+        .icon-bar {
+		width: 100%; /* Full-width */
+		background-color: rgba(98, 34, 204, .9); /* Dark-grey background */
+		overflow: auto; /* Overflow due to float */
+		}
+
+		.icon-bar a {
+		float: left; /* Float links side by side */
+		text-align: center; /* Center-align text */
+		width: 10%; /* Equal width (5 icons with 20% width each = 100%) */
+		padding: 1px 0; /* Some top and bottom padding */
+		transition: all 0.3s ease; /* Add transition for hover effects */
+		color: white; /* White text color */
+		font-size: 36px; /* Increased font size */
+		}
+
+		.icon-bar a:hover {
+		background-color: rgba(98, 34, 204, .9); /* Add a hover color */
+		}
+
+		.active {
+		background-color: rgba(255, 255, 255, .1); /* Add an active/current color */
+		}
+        
+        #drop-area {
+           
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			border: 2px dashed #ccc;
+			padding: 100px;
+			font-size: 12px;
+			border-radius: 5px;
+			background-color: #eee;
+			color: #333;
+			width: 80%;
+			cursor: pointer;
+			margin-left: 20%; /* adjust this value as needed */
+            margin-top: 5%;
+		}
+		
+    </style>
+    <script>
+        function validateForm() {
+            var fileInput = document.getElementById('file-upload');
+            if (fileInput.value === '') {
+                alert('Error: no file selected');
+                return false;
+            }
+            var allowedExtensions = ['pdf'];
+            var fileExtension = fileInput.value.split('.').pop().toLowerCase();
+            if (!allowedExtensions.includes(fileExtension)) {
+                alert('Error: only PDF files are allowed');
+                return false;
+            }
+            return true;
+        }
+        function handleDrop(e) {
+            e.preventDefault();
+            var files = e.dataTransfer.files;
+            for (var i = 0; i < files.length; i++) {
+                console.log(files[i].name);
+                // You can upload each file here using AJAX or submit the form to a server-side script
+                uploadFile(files[i]);
+    }
+		}
+		function handleDragOver(e) {
+			e.preventDefault();
+			e.dataTransfer.dropEffect = 'copy';
+			// Change the cursor to indicate a copy operation
+			document.getElementById('drop-area').style.cursor = 'copy';
+		}
+		function handleDragLeave(e) {
+			// Reset the cursor when leaving the drop area
+			document.getElementById('drop-area').style.cursor = 'default';
+		}
+		function handleClick() {
+			document.querySelector('input[type=file]').click();
+		}
+        function uploadFile(file) {
+            var xhr = new XMLHttpRequest();
+            var formData = new FormData();
+
+            // Add any additional form data here
+            formData.append('file', file);
+
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    console.log(xhr.responseText);
+                    // Handle the response from the server here
+                }
+            };
+
+            xhr.open('POST', 'upload.php', true);
+            xhr.send(formData);
+        }
+    </script>
+</head>
+
+<body>
+    <div class="icon-bar">
+		<a class="active" href="/"><i class="fa fa-home"></i></a>
+		<h1 style="color: white;">Welcome To Our Job Recommendation System</h1>
+		<!-- <a href="start_page.html"><i class="fa fa-search"></i></a> -->
+		<!-- <a href="#"><i class="fa fa-envelope"></i></a>
+		<a href="#"><i class="fa fa-globe"></i></a>
+		<a href="#"><i class="fa fa-trash"></i></a> -->
+	</div>
+
+    <div class="container-xxl bg-white p-0">
+        <!-- Spinner Start -->
+        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-grow text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <!-- Spinner End -->
+      <!-- Navbar & Hero Start -->
+        <div class="container-xxl position-relative p-0">
+            <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
+                <a href="" class="navbar-brand p-0">
+                    <h1 class="m-0">Recommendation System</h1>
+                    <!-- <img src="img/logo.png" alt="Logo"> -->
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                    <span class="fa fa-bars"></span>
+                </button>
+                
+            </nav>
+
+            
+        </div>
+		<br>
+		<br>
+        <!-- Navbar & Hero End -->
+
+		
+
+       
+       
+        <div class="container">
+            <div style="overflow: auto;">
+              <div style="width: 50%; float: right;">
+                <div style="margin-bottom: 20%;">
+
+                    <form style="margin-top: 15%;" method="POST" enctype="multipart/form-data" action="{{ url_for('predict_recommendation') }}" onsubmit="return validateForm()">
+                        <div id="drop-area" onclick="handleClick()" ondrop="handleDrop(event)" ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)">
+                            <!-- Click here to drop your cv. -->
+                            <!-- <input type="file" name="file[]" multiple style="display: none;"> -->
+                            <input style=" width: 100%;" type="file" id="file-upload" name="file-upload" accept=".pdf">
+                        </div>
+                        <br>
+                        <input style="width: 35%; margin-left: 45%;" class="btn btn-secondary py-sm-3 px-sm-5 rounded-pill me-3 animated slideInLeft" type="submit" value="Recommend!">
+                    </form>
+                <!-- <form class="recommendation-upload-form" method="POST" enctype="multipart/form-data" action="{{ url_for('predict_recommendation') }}" onsubmit="return validateForm()"> -->
+<!--                     <form style="width: 35%; margin-left: 45%;" class="recommendation-upload-form" method="POST" enctype="multipart/form-data" action="{{ url_for('predict_recommendation') }}" onsubmit="return validateForm()">-->
+<!--                        <br>-->
+<!--                        <label for="file-upload">Upload your CV</label>-->
+<!--                        <input type="file" id="file-upload" name="file-upload" accept=".pdf">-->
+<!--                        <br><br>-->
+<!--                        <input  class="btn btn-secondary py-sm-3 px-sm-5 rounded-pill me-3 animated slideInLeft" type="submit" value="Recommend!">-->
+<!--                    </form>-->
+                </div>
+              </div>
+              <div style="margin-top: 2%; width: 50%; float: left;">
+                <div class="testimonial-item bg-light rounded my-4">
+                  <p class="fs-5"><i class="fa fa-quote-left fa-4x text-primary mt-n4 me-3"></i>Once you have uploaded your CV, our system will use it to better understand your skills. This will allow us to provide you with even more accurate and personalized job recommendations.</p>
+                </div>
+              </div>
+                 <div style="margin-top: 2%; width: 50%; float: left;">
+                <div class="testimonial-item bg-light rounded my-4">
+                  <p class="fs-5"><i class="fa fa-quote-left fa-4x text-primary mt-n4 me-3"></i>We understand that finding the right job can be a daunting task, and that's why we're here to help. With our CV upload feature, you can easily submit your resume and let our powerful recommendation engine do the rest.</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+      
+                    
+<!--        We understand that finding the right job can be a daunting task, and that's why we're here to help. With our CV upload feature, you can easily submit your resume and let our powerful recommendation engine do the rest. Our system analyzes your skills to provide you with personalized job recommendations that match your profile.-->
+        <!-- Testimonial Start -->
+        <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
+            <div class="container py-5 px-lg-5">
+                <p class="text-center mb-5">Thank you for choosing our Job Recommendations System to help you find your dream job. We are committed to helping you find the right job and are excited to assist you in your job search journey.</p>
+                <div class="owl-carousel testimonial-carousel">
+                </div>
+            </div>
+        </div>
+        <!-- Testimonial End -->
+        
+
+       <!-- Footer Start -->
+       <div class="container-fluid bg-primary text-light footer wow fadeIn" data-wow-delay="0.1s">
+       
+        <div class="container px-lg-5">
+            <div class="copyright">
+                <div class="row">
+                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                        &copy; <a class="border-bottom" href="#">Job Recommendations System</a>, All Right Reserved. 
+                        
+                        <!--/*** This templates is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the templates without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+                        Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a>
+                    </div>
+                    <div class="col-md-6 text-center text-md-end">
+                        <div class="footer-menu">
+                            <a href="/">Home</a>
+                            <!-- <a href="">Cookies</a> -->
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+       </div>
+    <!-- Footer End -->
+
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-lg btn-secondary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+    </div>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('serve_static', path='lib/wow/wow.min.js') }}"></script>
+    <script src="{{ url_for('serve_static', path='lib/easing/easing.min.js') }}"></script>
+    <script src="{{ url_for('serve_static', path='lib/waypoints/waypoints.min.js') }}"></script>
+    <script src="{{ url_for('serve_static', path='lib/counterup/counterup.min.js') }}"></script>
+    <script src="{{ url_for('serve_static', path='lib/owlcarousel/owl.carousel.min.js') }}"></script>
+    <script src="{{ url_for('serve_static', path='lib/isotope/isotope.pkgd.min.js') }}"></script>
+    <script src="{{ url_for('serve_static', path='lib/lightbox/js/lightbox.min.js') }}"></script>
+
+    <!-- Template Javascript -->
+    <script src="{{ url_for('serve_static', path='js/main.js') }}"></script>
+</body>
+
+</html>

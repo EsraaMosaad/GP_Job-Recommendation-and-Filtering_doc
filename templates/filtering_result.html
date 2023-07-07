@@ -1,0 +1,150 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Result of Filtering System</title>
+       <!-- Libraries Stylesheet -->
+    <link href="{{ url_for('serve_static', path='lib/animate/animate.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('serve_static', path='lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('serve_static', path='lib/lightbox/css/lightbox.min.css') }}" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <!-- <link href="{{ url_for('serve_static', path='css/bootstrap.min.css') }}" rel="stylesheet"> -->
+
+    <!-- Template Stylesheet -->
+    <!-- <link rel="stylesheet" href="{{ url_for('serve_static', path='css/style.css') }}"> -->
+    <style>
+		body {
+  background-color: #f2f2f2;
+  font-family: Arial, sans-serif;
+}
+
+header {
+  background-color: #6222CC;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+}
+
+main {
+  margin: 20px;
+}
+
+.container {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  text-align: center;
+}
+
+h2 {
+  margin: 0;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  margin: 10px 0;
+}
+
+a {
+  color: #1b9ce2;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.previous {
+  background-color: #6222CC;
+  border: none;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 45%;
+}
+
+
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Filtering System</h1>
+    </header>
+  
+    <main>
+      <section style="color: #6222CC;" class="container">
+        {% if best_cvs %}
+        <h2>Top {{ best_cvs|length }} CVs:</h2>
+        <ul>
+          {% for cv in best_cvs %}
+          <li>
+            <a href="{{ url_for('static', filename='cv_uploads/' + cv[0]) }}" target="_blank">{{ cv[0] }}</a>
+            <ul>
+              <li>Phone: {{ cv[3]['phone'] }}</li>
+              <li>Email: {{ cv[3]['email'] }}</li>
+            </ul>
+          </li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+        
+      </section>
+      <br>
+      <button class="previous" onclick="location.href='filtering_page.html'">Previous Page</button>
+    </main>
+
+
+         <!-- Footer Start -->
+        <!-- Footer Start -->
+        <div style="color: black;" class="container-fluid bg-primary text-light footer wow fadeIn" data-wow-delay="0.1s">
+       
+          <div  class="container px-lg-5">
+              <div class="copyright">
+                  <div  class="row">
+                      <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                          &copy; <a style="color: black;" class="border-bottom" href="#">Job Recommendations System</a>, All Right Reserved. 
+                          
+                          <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+                          Designed By <a style="color: black;" class="border-bottom" href="https://htmlcodex.com">HTML Codex</a>
+                      </div>
+                      <br>
+                      <div class="col-md-6 text-center text-md-end">
+                          <div class="footer-menu">
+                              <a style="color: #6222CC;" href="start_page.html">Home</a>
+                              <a style="color: #6222CC;" href="team.html">Team</a>
+                              
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <!-- Footer End -->
+        <!-- Footer End -->
+    
+    
+            <!-- Back to Top -->
+            <a href="#" style="color: #176b5b;" class="btn btn-lg btn-secondary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+        <!-- JavaScript Libraries -->
+        <!-- <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="{{ url_for('serve_static', path='lib/wow/wow.min.js') }}"></script>
+        <script src="{{ url_for('serve_static', path='lib/easing/easing.min.js') }}"></script>
+        <script src="{{ url_for('serve_static', path='lib/waypoints/waypoints.min.js') }}"></script>
+        <script src="{{ url_for('serve_static', path='lib/counterup/counterup.min.js') }}"></script>
+        <script src="{{ url_for('serve_static', path='lib/owlcarousel/owl.carousel.min.js') }}"></script>
+        <script src="{{ url_for('serve_static', path='lib/isotope/isotope.pkgd.min.js') }}"></script>
+        <script src="{{ url_for('serve_static', path='lib/lightbox/js/lightbox.min.js') }}"></script> -->
+
+        <!-- Template Javascript -->
+        <script src="{{ url_for('serve_static', path='js/main.js') }}"></script>
+
+  </body>
+</html>
