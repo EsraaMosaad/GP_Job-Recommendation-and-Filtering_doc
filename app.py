@@ -196,57 +196,41 @@ def get_similar_jobs_for_job(job_title, num_results=5):
 
     # Return the list of similar jobs
     return similar_jobs[:num_results]
-# def get_skills_for_cv(cv_skills,job_skills):
-#     matching_cv_skills=[]
-#     recommended_cv_skills =['esraa']
-#     # cv_skills_str = " ".join(cv_skills)
-#     # cv_skills = cv_skills_str.split()
+
+
+# # Create a mapping of normalized skill forms to the original skill names
+# normalized_skill_dict = {}
+# for skill in all_skills['skill_name']:
+#     normalized_skill = skill.lower().translate(str.maketrans('', '', string.punctuation))
+#     if normalized_skill not in normalized_skill_dict:
+#         normalized_skill_dict[normalized_skill] = []
+#     normalized_skill_dict[normalized_skill].append(skill)
+# # print(normalized_skill_dict)
+# def get_skills_for_cv(cv_skills, job_skills):
+#     matching_cv_skills = []
+#     recommended_cv_skills = ['test-not set']
+
+#     # Match normalized CV skills to normalized skills in the dataset
 #     for cv_skill in cv_skills:
-#         x = all_skills[all_skills['skill_name'].str.contains(cv_skill)]
-#         print(x['skill_name'].tolist())
-#         matching_cv_skills.extend(x['skill_name'].tolist())
-#
+#         normalized_cv_skill = cv_skill.lower().translate(str.maketrans('', '', string.punctuation))
+#         if normalized_cv_skill in normalized_skill_dict:
+#             # Find the most similar skill among the matching skills
+#             best_match_score = -1
+#             best_match_skill = ''
+#             for skill in normalized_skill_dict[normalized_cv_skill]:
+#                 score = fuzz.token_sort_ratio(normalized_cv_skill, skill.lower().translate(str.maketrans('', '', string.punctuation)))
+#                 if score > best_match_score:
+#                     best_match_score = score
+#                     best_match_skill = skill
+#             # Add the best matching skill to the list of matching CV skills
+#             if best_match_score > 60: # Set a threshold for similarity score
+#                 matching_cv_skills.append(best_match_skill)
+
 #     print("CV skills:", cv_skills)
 #     print("Job skills:", job_skills)
 #     print("Matching CV skills:", list(set(matching_cv_skills)))
 #     print("Recommended CV skills:", list(set(recommended_cv_skills)))
-#     return list(set(matching_cv_skills)),list(set(recommended_cv_skills))
-# from fuzzywuzzy import fuzz
-
-
-# Create a mapping of normalized skill forms to the original skill names
-normalized_skill_dict = {}
-for skill in all_skills['skill_name']:
-    normalized_skill = skill.lower().translate(str.maketrans('', '', string.punctuation))
-    if normalized_skill not in normalized_skill_dict:
-        normalized_skill_dict[normalized_skill] = []
-    normalized_skill_dict[normalized_skill].append(skill)
-# print(normalized_skill_dict)
-def get_skills_for_cv(cv_skills, job_skills):
-    matching_cv_skills = []
-    recommended_cv_skills = ['test-not set']
-
-    # Match normalized CV skills to normalized skills in the dataset
-    for cv_skill in cv_skills:
-        normalized_cv_skill = cv_skill.lower().translate(str.maketrans('', '', string.punctuation))
-        if normalized_cv_skill in normalized_skill_dict:
-            # Find the most similar skill among the matching skills
-            best_match_score = -1
-            best_match_skill = ''
-            for skill in normalized_skill_dict[normalized_cv_skill]:
-                score = fuzz.token_sort_ratio(normalized_cv_skill, skill.lower().translate(str.maketrans('', '', string.punctuation)))
-                if score > best_match_score:
-                    best_match_score = score
-                    best_match_skill = skill
-            # Add the best matching skill to the list of matching CV skills
-            if best_match_score > 60: # Set a threshold for similarity score
-                matching_cv_skills.append(best_match_skill)
-
-    print("CV skills:", cv_skills)
-    print("Job skills:", job_skills)
-    print("Matching CV skills:", list(set(matching_cv_skills)))
-    print("Recommended CV skills:", list(set(recommended_cv_skills)))
-    return list(set(matching_cv_skills)), list(set(recommended_cv_skills))
+#     return list(set(matching_cv_skills)), list(set(recommended_cv_skills))
 
 ##function to get the vector representation of a job description 
 def get_job_vector(job_description):
@@ -268,7 +252,7 @@ def get_job_vector(job_description):
 #print(job_data['skills'][0])
 #print(get_job_vector(job_data['needed_skills'][0]))
 #store all job descriptions
-job_data = job_data.dropna(subset=['skills'])
+# job_data = job_data.dropna(subset=['skills'])
 all_job_vectors=[get_job_vector(i) for i in job_data['skills']]
 # print(len(all_job_vectors))
 
@@ -460,21 +444,21 @@ def predict_filtering():
 
 
 #Recommendation Task
-import threading
+# import threading
 
-def create_figure(job_title, cosine_similarity):
-    # Create the bar plot
-    color_map = cm.get_cmap('cool')  # choose a color map
-    colors = color_map(cosine_similarity)
-    fig, ax = plt.subplots(figsize=(8, 5))
-    ax.barh(job_title, cosine_similarity, color=colors)
-    ax.set_title('Top job recommendations based on similarity', fontsize=12)
-    plt.tight_layout()
+# def create_figure(job_title, cosine_similarity):
+#     # Create the bar plot
+#     color_map = cm.get_cmap('cool')  # choose a color map
+#     colors = color_map(cosine_similarity)
+#     fig, ax = plt.subplots(figsize=(8, 5))
+#     ax.barh(job_title, cosine_similarity, color=colors)
+#     ax.set_title('Top job recommendations based on similarity', fontsize=12)
+#     plt.tight_layout()
 
-    # Save the plot to a file and close the figure
-    plot_path = os.path.join(app.static_folder, 'bar_plot.png')
-    plt.savefig(plot_path)
-    plt.close(fig)
+#     # Save the plot to a file and close the figure
+#     plot_path = os.path.join(app.static_folder, 'bar_plot.png')
+#     plt.savefig(plot_path)
+#     plt.close(fig)
 @app.route('/recommendation_system', methods=['POST'])
 def predict_recommendation():
     if request.method == 'POST':
