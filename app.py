@@ -6,6 +6,7 @@ import numpy as np
 import ast
 import spacy
 import nltk
+nltk.download('stopwords')
 from matplotlib import pyplot as plt, cm
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
