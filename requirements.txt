@@ -1,4 +1,4 @@
-junicorn
+gunicorn
 PyPDF2
 pandas
 numpy
