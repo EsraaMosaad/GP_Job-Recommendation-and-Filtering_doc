@@ -6,7 +6,7 @@ spacy
 nltk
 matplotlib
 stopwords
-sklearn
+scikit-learn
 cosine_similarity
 pyresparser
 docx
