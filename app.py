@@ -7,6 +7,8 @@ import ast
 import spacy
 import nltk
 nltk.download('stopwords')
+nltk.download('punkt')
+nltk.download('wordnet')
 from matplotlib import pyplot as plt, cm
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
