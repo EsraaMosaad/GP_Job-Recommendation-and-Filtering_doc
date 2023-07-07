@@ -26,7 +26,7 @@ env = Environment()
 env.globals.update(enumerate=enumerate)
 import string
 # nltk.download('punkt')
-# nltk.download('stopwords')
+
 # nltk.download('wordnet')
 
 import pickle
