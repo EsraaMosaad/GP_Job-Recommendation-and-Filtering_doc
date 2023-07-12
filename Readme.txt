@@ -1,6 +1,6 @@
 
 
-# Project Name
+#Job Recommendation And Filtering System
 
 This repository contains the code for our project, where we trained different models on our dataset and extracted skills using the `TESAT_ALL_MODEL.ipynb` notebook. We also prepared a new dataset `new_data.csv` for training.
 
