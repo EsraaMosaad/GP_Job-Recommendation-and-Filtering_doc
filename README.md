@@ -21,6 +21,8 @@ To deploy the project, you can use the code provided in the app.py file. The app
 
 # Documentation
 You can find the documentation for this project in the file named Job Recommendation and Filtering_doc.pdf. The documentation includes information on the dataset, model selection, and results.
+[documantion]()
+[persentation](https://www.canva.com/design/DAFnrTtnyBc/wDG92qtlamPBourWG-04BQ/edit?utm_content=DAFnrTtnyBc&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
 
 # Team Members
 Mohammed Zaki
