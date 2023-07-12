@@ -21,6 +21,6 @@ Deployment
 To deploy the project, you can use the code provided in the app.file file. The app allows users to input their skills and job requirements and receive job recommendations and filtering based on their input.
 
 Documentation
-You can find the documentation for this project in the file named documentation.md. The documentation includes information on the dataset, model selection, and result.
+You can find the documentation for this project in the file named Job Recommendation and Filtering_doc.pdf. The documentation includes information on the dataset, model selection, and result.
 
 
