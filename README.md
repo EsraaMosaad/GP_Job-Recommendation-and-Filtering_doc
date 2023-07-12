@@ -4,7 +4,7 @@ This repository contains the code for our project that aims to provide job recom
 [TESAT_ALL_MODEL.ipynb](https://colab.research.google.com/drive/1iTZ5lqec37lPFf8UghWfwMK0A9q8lRPF#scrollTo=oUVzjcn8y6Zr)
 
 # Dataset
-We used a dataset of job listings that contains job titles, descriptions, and required skills. Our dataset is available [here](https://drive.google.com/file/d/1-608bi-T6aMGUQwqJbyWrIQkTR0HI0TN/view?usp=sharing ↗)
+We used a dataset of job listings that contains job titles, descriptions, and required skills. Our dataset is available [here](https://drive.google.com/file/d/1-608bi-T6aMGUQwqJbyWrIQkTR0HI0TN/view?usp=sharing)↗
 
 # Models
 We trained several models on our dataset, including:
