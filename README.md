@@ -32,12 +32,12 @@ You can also find the presentation for this project on Canva through this [link]
 
 
 # Team Members
-    ## Esraa Mosaad
-    ## Alaa Taher
-    ## Mohammed Zaki
-    ## Moaz Gamal
-    ## Abdelrahman Mohammed
-    ## Mostafa Mahmoud
+1. Esraa Mosaad
+2. Alaa Taher
+3. Mohammed Zaki
+4. Mostafa Mahmoud
+5. Moaz Gamal
+6. Abdelrahman Mohammed
 
 
 # Supervisor
