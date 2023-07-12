@@ -1,7 +1,7 @@
 
 # **Job Recommendation and Filtering System**
 This repository contains the code for our project that aims to provide job recommendations and filtering based on skills. We used several models to train on our dataset and extract skills, including Doc2Vec, Word2Vec, TF-IDF, FastText, and Topic Modeling LDA.
-[TESAT_ALL_MODEL.ipynb](https://colab.research.google.com/drive/1iTZ5lqec37lPFf8UghWfwMK0A9q8lRPF#scrollTo=oUVzjcn8y6Zr) ↗
+[TESAT_ALL_MODEL.ipynb]([https://colab.research.google.com/drive/1iTZ5lqec37lPFf8UghWfwMK0A9q8lRPF#scrollTo=oUVzjcn8y6Zr](https://colab.research.google.com/github/EsraaMosaad/our_project/blob/main/TESAT_ALL_MODEL.ipynb)) ↗
 
 # Dataset
 We used a dataset of job listings that contains job titles, descriptions, and required skills. Our dataset is available [here](https://drive.google.com/file/d/1-608bi-T6aMGUQwqJbyWrIQkTR0HI0TN/view?usp=sharing) ↗
