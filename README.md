@@ -10,10 +10,15 @@ We used a dataset of job listings that contains job titles, descriptions, and re
 We trained several models on our dataset, including:
 
 Doc2Vec: A neural network-based model that learns vector representations of documents.
+
 Word2Vec: A neural network-based model that learns vector representations of words.
+
 TF-IDF: A statistical model that measures the importance of words in a document.
+
 FastText: A neural network-based model that learns vector representations of words, as well as character n-grams.
+
 Topic Modeling LDA: A statistical model that extracts topics from a collection of documents.
+
 After evaluating the performance of each model, we found that the TF-IDF model provided the best results. We used it to generate job recommendations and filtering based on skills.
 
 # Deployment
